@@ -7,10 +7,12 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const { Signup, user } = useAuthContext();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    setError("");
     setIsLoading(true);
     e.preventDefault();
     try {
@@ -20,8 +22,10 @@ const Signup = () => {
         navigate("/");
       }, 2000);
       setIsLoading(false);
+      setEmail("");
+      setPassword("");
     } catch (error) {
-      console.log(error);
+      setError(error.message);
       setIsLoading(false);
     }
   };
@@ -39,6 +43,11 @@ const Signup = () => {
           <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-3xl font-bold">Sign Up</h1>
+              {error ? (
+                <p className="bg-red-600 text-center text-sm py-[4px] my-[10px]">
+                  {error}
+                </p>
+              ) : null}
               <form
                 onSubmit={handleSubmit}
                 className="w-full flex flex-col py-4"
