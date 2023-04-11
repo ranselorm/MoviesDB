@@ -5,7 +5,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
+
+import { setDoc, doc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -13,7 +15,10 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   function Signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password);
+    setDoc(doc(db, "users", email), {
+      savedMovies: [],
+    });
   }
 
   function Login(email, password) {

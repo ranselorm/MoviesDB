@@ -76,11 +76,11 @@ const Signup = () => {
                   </p>
                   <p>Need Help?</p>
                 </div>
-                <p className="py-8">
-                  <span className="text-gray-600">
+                <p className="py-8 mr-4">
+                  <span className="text-gray-600 text-sm mr-2">
                     Already subscribed to Netflix?
                   </span>
-                  <Link to="/login">Sign In</Link>
+                  <Link to="/login">Login</Link>
                 </p>
               </form>
             </div>
