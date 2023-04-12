@@ -63,7 +63,7 @@ const SavedMovies = () => {
                   {movie?.title}
                 </p>
                 <AiOutlineClose
-                  className="absolute top-2 right-4 bg-red-600 rounded-full"
+                  className="absolute top-2 right-4 "
                   onClick={() => deleteShow(movie.id)}
                 />
               </div>
